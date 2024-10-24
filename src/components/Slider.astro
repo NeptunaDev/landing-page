@@ -19,39 +19,21 @@ const slidersData = [
     }
 ]
 ---
-
-<div id="indicators-carousel" class="relative w-full" data-carousel="slide">
-    <!-- Carousel wrapper -->
-    <div class="relative h-screen overflow-hidden rounded-lg">
-        <!-- Item 1 -->
-        <div class="duration-700 ease-in-out" data-carousel-item="active">
-            <img src="/descargar.jpg" class="absolute w-full h-full object-cover" alt="Imagen 1">
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center p-4 rounded overflow-hidden flex flex-col items-center justify-center max-w-xl">
-                <h1 class="text-3xl font-bold">Hola mundo 1</h1>
-                <p class="text-xl mb-2">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
-                <SliderButton />
-            </div>
+    <div id="indicators-carousel" class="relative w-full" data-carousel="slide">
+        <!-- Carousel wrapper -->
+        <div class="relative h-screen overflow-hidden rounded-lg">
+            {slidersData.map((slide, index) => (
+                <div class={`${index === 0 ? '' : 'hidden'}`} data-carousel-item={index === 0 ? "active" : ""}>
+                    <img src={slide.image} class="absolute w-full h-full object-cover" alt={`Imagen ${index + 1}`}>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-center bg-white bg-opacity-70 p-4 rounded flex flex-col items-center justify-center max-w-xl">
+                        <h1 class="text-3xl font-bold">{slide.title}</h1>
+                        <p class="text-xl mb-2">{slide.description}</p>
+                        <SliderButton />
+                    </div>
+                </div>
+            ))}
         </div>
-        <!-- Item 2 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/descar.jpg" class="absolute w-full h-full object-cover" alt="Imagen 2">
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-70 text-center p-4 rounded overflow-hidden flex flex-col items-center justify-center max-w-xl">
-                <h1 class="text-3xl font-bold">Hola munto 2</h1>
-                <p class="text-xl mb-2">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
-                <SliderButton />
-            </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/descar2.jpg" class="absolute w-full h-full object-cover" alt="Imagen 3">
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-70 p-4 rounded overflow-hidden flex flex-col items-center justify-center max-w-xl">
-                <h2 class="text-3xl font-bold">Hola munto 3</h2>
-                <p class="text-xl mb-2">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
-                <SliderButton />
-            </div>
-        </div>
-    </div>
-    <!-- Slider indicators -->
+    
     <div class="absolute z-30 flex -translate-x-1/2 space-x-3 bottom-5 left-1/2">
         {
           slidersData.map((_, index) => (
