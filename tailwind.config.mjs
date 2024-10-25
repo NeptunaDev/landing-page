@@ -8,6 +8,6 @@ export default {
     extend: {},
   },
   plugins: [
-    require('flowbite/plugin') // Agrega el plugin de Flowbite
+    require('flowbite/plugin'), // Agrega el plugin de Flowbite
   ],
 }
